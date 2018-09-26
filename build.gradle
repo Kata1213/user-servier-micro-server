@@ -1,0 +1,55 @@
+buildscript {
+	ext {
+		springBootVersion = '1.5.16.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+group = 'com.thoughworks.traning.jingyli'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+ext {
+	springCloudVersion = 'Edgware.SR4'
+}
+
+dependencies {
+	compile('com.google.guava:guava:21.0')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.springframework.boot:spring-boot-starter-security')
+	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.cloud:spring-cloud-starter-feign')
+	compileOnly('org.projectlombok:lombok')
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
+	runtime('mysql:mysql-connector-java')
+	compile('org.flywaydb:flyway-core')
+	compile('org.springframework.cloud:spring-cloud-starter-zuul')
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
+	compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.0.5.RELEASE', ext: 'pom'
+
+
+	compile('org.springframework.cloud:spring-cloud-starter-config')
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	testCompile('org.springframework.security:spring-security-test')
+}
+
+dependencyManagement {
+	imports {
+		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+	}
+}
