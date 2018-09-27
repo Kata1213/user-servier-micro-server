@@ -49,6 +49,7 @@ public class UserController {
 
     @GetMapping
     public String hello(){
+        System.out.println("Hello Lily ! ");
         return "hello Lily";
     }
 
