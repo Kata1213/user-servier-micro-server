@@ -1,3 +1,13 @@
+#spring:
+#  application:
+#    name: user_service
+#  config:
+#    location: ../config/application.yml,../config/application-default.yml,../config/
+#  cloud:
+#    config:
+
+
+
 spring:
   application:
     name: userService
@@ -5,5 +15,7 @@ spring:
     active: dev
   cloud:
     config:
+      fail-fast: false
       label: master
       uri: http://localhost:8888
+      enabled: true
